@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/human-robot-tilesheet.png" type="Texture" id=1]
+[ext_resource path="res://game/actors/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/Level.gd" type="Script" id=3]
+[ext_resource path="res://game/actors/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/TileMapAstar.gd" type="Script" id=5]
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=8]
+0/name = "human-robot-tilesheet.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 32 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 9 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 13 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 5, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 14 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "human-robot-tilesheet.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 192, 0, 32, 32 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 32, 32 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="Level" type="Node2D"]
+position = Vector2( 32, 32 )
+script = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+show_behind_parent = true
+tile_set = SubResource( 8 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 64
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 3, -65536, 1610612736, 1, -65535, 1610612736, 1, -65534, 1610612736, 1, -65533, 1610612736, 1, -65532, 1610612736, 1, -65531, 1610612736, 1, -65530, 1610612736, 1, -65529, 1610612736, 1, -65528, 1610612736, 1, -65527, 0, 4, -65526, 1610612736, 1, -65525, 1610612736, 1, -65524, 1610612736, 1, -65523, -1610612736, 3, 65535, -1073741824, 1, 0, -1610612735, 0, 1, -1610612735, 0, 2, -1610612735, 0, 3, -1610612735, 0, 4, -1610612735, 0, 5, -1610612735, 0, 6, -1610612735, 0, 7, -1610612735, 0, 8, -1610612735, 0, 9, -1073741824, 1, 10, -1610612735, 0, 11, -1610612735, 0, 12, -1610612735, 0, 13, -1610612736, 1, 131071, -1073741824, 4, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 1610612736, 2, 65541, -1610612735, 0, 65542, -1610612735, 0, 65543, 0, 0, 65544, -1610612735, 0, 65545, -1073741824, 2, 65546, -1610612735, 0, 65547, -1610612735, 0, 65548, -1610612735, 0, 65549, -1610612736, 1, 196607, -1073741824, 1, 131072, -1610612735, 0, 131073, -1610612735, 0, 131074, -1610612735, 0, 131075, -1610612735, 0, 131076, -1610612735, 0, 131077, -1610612735, 0, 131078, -1610612735, 0, 131079, -1610612735, 0, 131080, -1610612735, 0, 131081, -1610612735, 0, 131082, -1610612735, 0, 131083, -1610612735, 0, 131084, -1610612735, 0, 131085, -1610612736, 1, 262143, -1073741824, 1, 196608, -1610612735, 0, 196609, -1073741824, 0, 196610, -1610612735, 0, 196611, -1073741824, 0, 196612, -1073741824, 0, 196613, 0, 3, 196614, 0, 1, 196615, -1610612736, 3, 196616, -1073741824, 0, 196617, 0, 2, 196618, 0, 1, 196619, 0, 1, 196620, 0, 1, 196621, -1610612736, 1, 327679, -1073741824, 1, 262144, -1610612735, 0, 262145, -1073741824, 0, 262146, -1610612735, 0, 262147, -1073741824, 0, 262148, -1610612735, 0, 262149, -1073741824, 1, 262150, -1610612735, 0, 262151, -1073741824, 1, 262152, -1610612735, 0, 262153, -1610612735, 0, 262154, -1610612735, 0, 262155, -1610612735, 0, 262156, -1610612735, 0, 262157, -1610612736, 1, 393215, -1073741824, 1, 327680, -1610612735, 0, 327681, -1073741824, 0, 327682, -1610612735, 0, 327683, -1610612735, 0, 327684, -1610612735, 0, 327685, -1073741824, 2, 327686, -1610612735, 0, 327687, -1073741824, 2, 327688, -1610612735, 0, 327689, -1610612735, 0, 327690, -1610612735, 0, 327691, -1610612735, 0, 327692, -1610612735, 0, 327693, -1610612736, 1, 458751, -1073741824, 1, 393216, -1610612735, 0, 393217, -1610612735, 0, 393218, -1610612735, 0, 393219, -1610612735, 0, 393220, -1610612735, 0, 393221, -1610612735, 0, 393222, -1610612735, 0, 393223, -1610612735, 0, 393224, -1610612735, 0, 393225, -1610612735, 0, 393226, -1610612735, 0, 393227, -1610612735, 0, 393228, -1610612735, 0, 393229, -1610612736, 1, 524287, -1073741824, 3, 458752, 0, 1, 458753, 0, 1, 458754, 0, 1, 458755, 0, 1, 458756, 0, 1, 458757, 0, 1, 458758, 0, 1, 458759, 0, 1, 458760, 0, 1, 458761, 0, 1, 458762, 0, 1, 458763, 0, 1, 458764, 0, 1, 458765, 1610612736, 3 )
+script = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 72.6316, 15.7895 )
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 206.7, 141.766 )
