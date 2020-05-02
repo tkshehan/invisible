@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Cloak, uncloak impact.wav-b7ac0ed4847d9fbe0f881a7575e5a617.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Cloak, uncloak impact.wav"
+dest_files=[ "res://.import/Cloak, uncloak impact.wav-b7ac0ed4847d9fbe0f881a7575e5a617.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

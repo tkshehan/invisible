@@ -15,6 +15,7 @@ hframes = 5
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -23,3 +24,4 @@ cast_to = Vector2( 0, 32 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Robot Death.wav-176e0258e2914fe0510d31f9495282ef.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Robot Death.wav"
+dest_files=[ "res://.import/Robot Death.wav-176e0258e2914fe0510d31f9495282ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

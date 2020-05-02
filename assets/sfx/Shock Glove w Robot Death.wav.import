@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Shock Glove w Robot Death.wav-5458cd894c2f43b15afb4bb541141653.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Shock Glove w Robot Death.wav"
+dest_files=[ "res://.import/Shock Glove w Robot Death.wav-5458cd894c2f43b15afb4bb541141653.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

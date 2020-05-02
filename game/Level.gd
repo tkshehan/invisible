@@ -1,7 +1,12 @@
 extends Node2D
 
+var last_enemy
+
 func _ready():
 	globals.nav = $TileMap
+	$Player.connect("moved", self, '_on_player_moved')
+	$Player.connect("cloaked", self, '_on_player_cloaked')
+	$Player.connect("uncloaked", self, '_on_player_uncloaked')
 
 func _draw():
 	var begin = -64
@@ -13,3 +18,11 @@ func _draw():
 	for y in range(begin, end_y, 32):
 		draw_line(Vector2(begin, y), Vector2(end_x, y), color)
 
+func _on_player_moved():
+	get_tree().call_group("enemies", "player_moved")
+	
+func _on_player_cloaked():
+	pass # add decoy
+	
+func _on_player_uncloaked():
+	pass # remove decoy

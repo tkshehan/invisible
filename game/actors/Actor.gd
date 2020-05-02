@@ -3,7 +3,9 @@ class_name Actor
 
 onready var tween = $Tween
 onready var ray = $RayCast2D
-var speed = 10
+var speed = 6
+
+signal moved
 
 var tile_size = 32
 
@@ -42,3 +44,6 @@ func move_tween(dir):
 
 func get_dir():
 	pass
+
+func _on_Tween_tween_completed(_object: Object, key: NodePath) -> void:
+	emit_signal("moved")
