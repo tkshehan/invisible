@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Actor",
 "class": "Decoy",
 "language": "GDScript",
-"path": "res://Decoy.gd"
+"path": "res://game/actors/Decoy.gd"
 }, {
 "base": "Actor",
 "class": "Enemy",

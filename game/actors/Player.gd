@@ -28,6 +28,8 @@ func get_dir():
 		end_turn()
 	for dir in inputs.keys():
 		if Input.is_action_pressed(dir):
+			$FootSteps.play()
+			set_frame(dir)
 			return inputs[dir]
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
@@ -48,7 +50,7 @@ func cloak():
 		return
 	layers = 0
 	$Sprite.set_frame(0)
-	$PlayerSounds.cloak()
+	$CloakSounds.cloak()
 	cloaked = true
 	
 	modulate = Color(1, 1, 1, 0.5)
@@ -57,8 +59,19 @@ func cloak():
 func uncloak():
 	layers = 2
 	$Sprite.set_frame(1)
-	$PlayerSounds.uncloak()
+	$CloakSounds.uncloak()
 	cloaked = false
 	cloak_timer = 3
 	modulate = Color(1,1,1,1)
 	emit_signal("uncloaked")
+
+func set_frame(dir):
+	print(dir)
+	if dir == "move_down":
+		$Sprite.frame = 0
+	if dir == "move_left":
+		$Sprite.frame = 1
+	if dir == "move_up":
+		$Sprite.frame = 2
+	if dir == "move_right":
+		$Sprite.frame = 3

@@ -35,8 +35,6 @@ func get_dir():
 func look_for_player():
 	check_target()
 	for body in $VisionAxis/Vision.check_vision():
-		if body is Decoy: print('decoy')
-		if body is Player: print('player')
 		if body is Player or body is Decoy:
 			target = body
 			if !agressive:
