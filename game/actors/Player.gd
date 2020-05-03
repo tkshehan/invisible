@@ -4,6 +4,8 @@ class_name Player
 var cloaked = false
 var cloak_timer = 3
 
+var alive = true
+
 signal cloaked
 signal uncloaked
 
@@ -16,12 +18,14 @@ var inputs = {
 
 	
 func _process(_delta):
-		if Input.is_action_pressed("cloak") and not cloaked:
+		if Input.is_action_pressed("cloak") and not cloaked and alive:
 			cloak()
 			if tween.is_active():
 				cloak_timer += 1
 
 func get_dir():
+	if not alive:
+		return
 	if Input.is_action_just_pressed("wait"):
 		end_turn()
 	for dir in inputs.keys():
@@ -63,7 +67,6 @@ func uncloak():
 	emit_signal("uncloaked")
 
 func set_frame(dir):
-	print(dir)
 	if dir == "move_down":
 		$Sprite.frame = 0
 	if dir == "move_left":
@@ -72,3 +75,9 @@ func set_frame(dir):
 		$Sprite.frame = 2
 	if dir == "move_right":
 		$Sprite.frame = 3
+
+func kill():
+	alive = false
+	$CloakSounds.death()
+	$Sprite.frame = 4
+	pass

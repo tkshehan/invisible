@@ -2,13 +2,18 @@ extends Node2D
 
 var last_enemy
 onready var decoy = load("res://game/actors/Decoy.tscn")
+signal level_cleared
 
 func _ready():
 	globals.nav = $TileMap
 	$Player.connect("moved", self, '_on_player_moved')
 	$Player.connect("cloaked", self, '_on_player_cloaked')
 	$Player.connect("uncloaked", self, '_on_player_uncloaked')
-
+	for body in get_tree().get_nodes_in_group("ai"):
+		if body is Enemy:
+			body.connect("killed_player", self, "kill_player")
+	
+# Draws a grid
 func _draw():
 	var begin = -64
 	var end_y = 600
@@ -20,13 +25,23 @@ func _draw():
 		draw_line(Vector2(begin, y), Vector2(end_x, y), color)
 
 func _on_player_moved():
+	var position = $TileMap.world_to_map($Player.position)
+	if $TileMap.get_cell(position.x, position.y) == 2:
+		on_player_win()
+	
 	get_tree().call_group("ai", "player_moved")
 	
 func _on_player_cloaked():
-#	get_tree().call_group("ai", "player_cloaked")
 	var _decoy = decoy.instance()
 	_decoy.position = $Player.position - Vector2(1,1)
 	add_child(_decoy)
 	
 func _on_player_uncloaked():
-	pass # remove decoy
+	pass
+
+func kill_player():
+	$Death_Popup.visible = true
+	$Player.kill()
+
+func on_player_win():
+	emit_signal("level_cleared")

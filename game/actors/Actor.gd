@@ -5,6 +5,7 @@ onready var tween = $Tween
 onready var ray = $RayCast2D
 var speed = 6
 
+signal bumped(body)
 signal moved
 
 var tile_size = 32
@@ -22,19 +23,16 @@ func _process(_delta):
 		move(dir)
 			
 func move(dir):
-	## Correct if inputting 2 directions at once
 	if dir.y != 0 and dir.x != 0:
 		ray.cast_to = Vector2(0, dir.y) * tile_size
 		ray.force_raycast_update()
-		if !ray.is_colliding():
-			dir = Vector2(0, dir.y)
-		else:
-			dir = Vector2(dir.x, 0)
 	ray.cast_to = dir * tile_size
 	ray.force_raycast_update()
 	if !ray.is_colliding():
 #		$AnimationPlayer.play(dir)
 		move_tween(dir)
+	else:
+		emit_signal("bumped", ray.get_collider())
 		
 func move_tween(dir):
 	tween.interpolate_property(self, "position",

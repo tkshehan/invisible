@@ -6,7 +6,11 @@ var agressive = false
 export var direction = Vector2.LEFT
 var target = self
 
+signal killed_player
+
 func _ready():
+	speed = 10
+	connect("bumped", self, "_on_bump")
 	$VisionAxis.look(direction)
 	
 func player_moved():
@@ -65,3 +69,7 @@ func check_target():
 		agressive = false
 		$Sprite.frame = 0
 		$VisionAxis/Light2D.color = Color(0.4, 0.4, 0, 0.4)
+
+func _on_bump(body):
+	if body is Player:
+		emit_signal("killed_player")

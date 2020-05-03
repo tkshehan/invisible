@@ -16,7 +16,6 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 4 )
-hframes = 4
 frame = 0
 
 [node name="CloakSounds" type="AudioStreamPlayer2D" parent="." index="5"]
