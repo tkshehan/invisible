@@ -6,6 +6,7 @@
 [node name="Decoy" groups=[
 "ai",
 ] instance=ExtResource( 2 )]
+modulate = Color( 0, 0, 0, 0.0980392 )
 collision_layer = 8
 collision_mask = 5
 script = ExtResource( 1 )
