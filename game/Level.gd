@@ -1,6 +1,7 @@
 extends Node2D
 
 var last_enemy
+onready var decoy = load("res://game/actors/Decoy.tscn")
 
 func _ready():
 	globals.nav = $TileMap
@@ -19,10 +20,13 @@ func _draw():
 		draw_line(Vector2(begin, y), Vector2(end_x, y), color)
 
 func _on_player_moved():
-	get_tree().call_group("enemies", "player_moved")
+	get_tree().call_group("ai", "player_moved")
 	
 func _on_player_cloaked():
-	pass # add decoy
+#	get_tree().call_group("ai", "player_cloaked")
+	var _decoy = decoy.instance()
+	_decoy.position = $Player.position - Vector2(1,1)
+	add_child(_decoy)
 	
 func _on_player_uncloaked():
 	pass # remove decoy

@@ -45,5 +45,5 @@ func move_tween(dir):
 func get_dir():
 	pass
 
-func _on_Tween_tween_completed(_object: Object, key: NodePath) -> void:
+func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	emit_signal("moved")

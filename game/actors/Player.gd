@@ -24,11 +24,16 @@ func _process(_delta):
 				cloak_timer += 1
 
 func get_dir():
+	if Input.is_action_just_pressed("wait"):
+		end_turn()
 	for dir in inputs.keys():
 		if Input.is_action_pressed(dir):
 			return inputs[dir]
 
-func _on_Tween_tween_completed(_object: Object, key: NodePath) -> void:
+func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
+	end_turn()
+	
+func end_turn():
 	emit_signal("moved")
 	if cloak_timer == 0:
 		uncloak()
@@ -41,13 +46,16 @@ func _on_Tween_tween_completed(_object: Object, key: NodePath) -> void:
 func cloak():
 	if cloaked:
 		return
+	layers = 0
 	$Sprite.set_frame(0)
 	$PlayerSounds.cloak()
 	cloaked = true
+	
 	modulate = Color(1, 1, 1, 0.5)
 	emit_signal("cloaked")
 
 func uncloak():
+	layers = 2
 	$Sprite.set_frame(1)
 	$PlayerSounds.uncloak()
 	cloaked = false
