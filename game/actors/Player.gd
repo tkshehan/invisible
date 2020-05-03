@@ -14,8 +14,6 @@ var inputs = {
 	"move_down": Vector2.DOWN
 }
 
-func _ready():
-	globals.target = self.position
 	
 func _process(_delta):
 		if Input.is_action_pressed("cloak") and not cloaked:
@@ -42,13 +40,12 @@ func end_turn():
 		
 	if cloaked:
 		cloak_timer -= 1
-	else:
-		globals.target = self.position
+
 		
 func cloak():
 	if cloaked:
 		return
-	layers = 0
+	layers = 4
 	$Sprite.set_frame(0)
 	$CloakSounds.cloak()
 	cloaked = true
@@ -57,7 +54,7 @@ func cloak():
 	emit_signal("cloaked")
 
 func uncloak():
-	layers = 2
+	layers = 5
 	$Sprite.set_frame(1)
 	$CloakSounds.uncloak()
 	cloaked = false

@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/actors/Player.gd" type="Script" id=2]
 [ext_resource path="res://game/actors/PlayerSounds.gd" type="Script" id=3]
 [ext_resource path="res://assets/characters/player-invisible-game.png" type="Texture" id=4]
 [ext_resource path="res://assets/sfx/Footsteps.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/spotlight.png" type="Texture" id=6]
 
 [node name="Player" instance=ExtResource( 1 )]
 z_index = 1
+z_as_relative = false
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
@@ -23,3 +25,11 @@ script = ExtResource( 3 )
 [node name="FootSteps" type="AudioStreamPlayer2D" parent="." index="6"]
 stream = ExtResource( 5 )
 volume_db = -30.0
+
+[node name="Light2D" type="Light2D" parent="." index="7"]
+position = Vector2( -0.400078, 11.8654 )
+texture = ExtResource( 6 )
+color = Color( 1, 1, 1, 0.054902 )
+energy = 0.5
+range_height = -2048.0
+range_layer_max = 1

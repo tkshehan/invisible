@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/human-robot-characters.png-56fcb4b7f735e65f964a553262c97334.stex"
+path="res://.import/spotlight.png-2e75f9f2cfda04449f6b45a3ab35c6b3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/human-robot-characters.png"
-dest_files=[ "res://.import/human-robot-characters.png-56fcb4b7f735e65f964a553262c97334.stex" ]
+source_file="res://assets/spotlight.png"
+dest_files=[ "res://.import/spotlight.png-2e75f9f2cfda04449f6b45a3ab35c6b3.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

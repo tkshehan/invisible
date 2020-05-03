@@ -41,16 +41,27 @@ func look_for_player():
 				turn_aggressive()
 			
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
+	if target != self:
+		var points = globals.nav.find_simple_path(
+		self.position,
+		target.position
+		)
+		if points.size()  >= 2:
+			var dir = points[1] - points[0]
+			var dir_norm = dir.normalized().round()
+			$VisionAxis.look(dir_norm)
 	emit_signal("moved")
 	look_for_player()
 	
 func turn_aggressive():
-	$Sprite.frame = 3
+	$Sprite.frame = 1
 	agressive = true
 	turns -= 1
+	$VisionAxis/Light2D.color = Color(0.4, 0, 0, 0.4)
 
 func check_target():
 	if not is_instance_valid(target):
 		target = self
 		agressive = false
-		$Sprite.frame = 2
+		$Sprite.frame = 0
+		$VisionAxis/Light2D.color = Color(0.4, 0.4, 0, 0.4)
