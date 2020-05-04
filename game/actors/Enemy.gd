@@ -65,17 +65,7 @@ func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	ray.force_raycast_update()
 	if ray.is_colliding():
 		emit_signal("collision", self, ray.get_collider())
-	#Correct facing if enemy is target
-	if target != self:
-		var points = globals.nav.find_simple_path(
-		self.position,
-		target.position
-		)
-		if points.size()  >= 2:
-			var dir = points[1] - points[0]
-			var dir_norm = dir.normalized().round()
-			if !look_for_player():
-				$VisionAxis.look(dir_norm)
+		
 	emit_signal("moved")
 	look_for_player()
 	
@@ -95,8 +85,11 @@ func check_target():
 		$Sprite.frame = 0
 		$VisionAxis/Light2D.color = Color(0.4, 0.4, 0, 0.4)
 
-func _on_bump(body):
+func _on_bump(body, dir):
 	if body is Actor:
 		if body is Player:
 			emit_signal("killed_player")
+		else:
+			yield(body, "moved")
+			move(dir)
 
