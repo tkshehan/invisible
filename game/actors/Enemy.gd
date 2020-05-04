@@ -3,15 +3,23 @@ class_name Enemy
 
 var turns = 0
 var agressive = false
-export var direction = Vector2.LEFT
+export(String, "up", "down", "left", "right") var direction = "down"
+var directions = {
+	"right": Vector2.RIGHT,
+	"left": Vector2.LEFT,
+	"up": Vector2.UP,
+	"down": Vector2.DOWN
+}
 var target = self
 
+signal collision(body1, body2)
 signal killed_player
 
 func _ready():
 	speed = 10
 	connect("bumped", self, "_on_bump")
-	$VisionAxis.look(direction)
+	$VisionAxis.look(directions[direction])
+	look_for_player()
 	
 func player_moved():
 	look_for_player()
@@ -38,11 +46,14 @@ func get_dir():
 	
 func look_for_player():
 	check_target()
+	var found_target = false
 	for body in $VisionAxis/Vision.check_vision():
 		if body is Player or body is Decoy:
 			target = body
 			if !agressive:
 				turn_aggressive()
+		found_target = true
+	return found_target
 			
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	if target != self:
@@ -53,11 +64,13 @@ func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 		if points.size()  >= 2:
 			var dir = points[1] - points[0]
 			var dir_norm = dir.normalized().round()
-			$VisionAxis.look(dir_norm)
+			if !look_for_player():
+				$VisionAxis.look(dir_norm)
 	emit_signal("moved")
 	look_for_player()
 	
 func turn_aggressive():
+	$RobotSounds.lock_on()
 	$Sprite.frame = 1
 	agressive = true
 	turns -= 1
@@ -71,5 +84,12 @@ func check_target():
 		$VisionAxis/Light2D.color = Color(0.4, 0.4, 0, 0.4)
 
 func _on_bump(body):
-	if body is Player:
-		emit_signal("killed_player")
+	if body is Actor:
+		if body is Player:
+			emit_signal("killed_player")
+
+func _on_Tween_tween_step(_object: Object, _key: NodePath, elapsed: float, _value: Object) -> void:
+	if elapsed > 0.04 and elapsed < 0.06:
+		ray.force_raycast_update()
+		if ray.is_colliding():
+			emit_signal("collision", self, ray.get_collider())

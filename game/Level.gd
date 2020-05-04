@@ -12,6 +12,7 @@ func _ready():
 	for body in get_tree().get_nodes_in_group("ai"):
 		if body is Enemy:
 			body.connect("killed_player", self, "kill_player")
+			body.connect("collision", self, "robot_collision")
 	
 # Draws a grid
 func _draw():
@@ -35,6 +36,8 @@ func _on_player_cloaked():
 	var _decoy = decoy.instance()
 	_decoy.position = $Player.position - Vector2(1,1)
 	add_child(_decoy)
+	if $Player.cloaks_left == 0:
+		$HUD.no_cloak()
 	
 func _on_player_uncloaked():
 	pass
@@ -42,6 +45,12 @@ func _on_player_uncloaked():
 func kill_player():
 	$Death_Popup.visible = true
 	$Player.kill()
+	globals.stop_music()
 
 func on_player_win():
 	emit_signal("level_cleared")
+
+func robot_collision(body1, body2):
+	if body1 is Enemy and body2 is Enemy:
+		body1.queue_free()
+		body2.queue_free()

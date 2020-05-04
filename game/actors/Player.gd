@@ -3,6 +3,7 @@ class_name Player
 
 var cloaked = false
 var cloak_timer = 3
+var cloaks_left = 1
 
 var alive = true
 
@@ -53,6 +54,7 @@ func end_turn():
 func cloak():
 	if cloaked:
 		return
+	cloaks_left -= 1
 	layers = 4
 	$Sprite.set_frame(0)
 	$CloakSounds.cloak()

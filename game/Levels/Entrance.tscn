@@ -17,12 +17,15 @@ position = Vector2( 202.213, 41.4695 )
 
 [node name="Enemy2" parent="." index="4" instance=ExtResource( 1 )]
 position = Vector2( 72.5843, -0.912548 )
+direction = "left"
 
 [node name="Enemy4" parent="." index="5" instance=ExtResource( 1 )]
 position = Vector2( 71.8492, 122.666 )
+direction = "left"
 
 [node name="Enemy3" parent="." index="6" instance=ExtResource( 1 )]
 position = Vector2( 72.8571, 66.2001 )
+direction = "left"
 
 [node name="Label" type="Label" parent="." index="7"]
 margin_left = 271.552
@@ -38,3 +41,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Cloak" parent="HUD" index="0"]
+visible = false

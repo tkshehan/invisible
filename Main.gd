@@ -3,6 +3,7 @@ extends Node
 var level: Node2D
 
 func _ready() -> void:
+	globals.connect('stop_music', self, 'stop_music')
 	globals.current_level = 1
 	load_level()
 
@@ -26,7 +27,11 @@ func clear_level():
 func restart_level():
 	clear_level()
 	load_level()
+	$Music.play()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		restart_level()
+
+func stop_music():
+	$Music.stop()
