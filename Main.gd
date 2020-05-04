@@ -21,6 +21,8 @@ func clear_level():
 	level.queue_free()
 
 func restart_level():
+	if globals.current_level == globals.max_level:
+		return
 	clear_level()
 	yield( level, "tree_exited" )
 	call_deferred("load_level")

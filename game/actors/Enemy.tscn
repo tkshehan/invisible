@@ -21,14 +21,12 @@ vframes = 3
 hframes = 1
 frame = 0
 
-[node name="RayCast2D" parent="." index="2"]
-visible = true
-
 [node name="VisionAxis" type="Node2D" parent="." index="5"]
 scale = Vector2( 1, 1.33 )
 script = ExtResource( 5 )
 
 [node name="Vision" type="Node2D" parent="VisionAxis" index="0"]
+visible = false
 position = Vector2( 0.242424, 12.8781 )
 script = ExtResource( 3 )
 
