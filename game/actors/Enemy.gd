@@ -48,10 +48,14 @@ func look_for_player():
 	check_target()
 	var found_target = false
 	for body in $VisionAxis/Vision.check_vision():
-		if body is Player or body is Decoy:
-			target = body
-			if !agressive:
-				turn_aggressive()
+		var _target = target
+		if body is Decoy:
+			_target = body
+			turn_aggressive()
+		if body is Player and not _target is Decoy:
+			_target = body
+			turn_aggressive()
+		target = _target
 		found_target = true
 	return found_target
 			
@@ -76,6 +80,8 @@ func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	look_for_player()
 	
 func turn_aggressive():
+	if agressive:
+		return
 	$RobotSounds.lock_on()
 	$Sprite.frame = 1
 	agressive = true
