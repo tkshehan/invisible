@@ -16,7 +16,6 @@ signal collision(body1, body2)
 signal killed_player
 
 func _ready():
-	print('new')
 	speed = 10
 	connect("bumped", self, "_on_bump")
 	$VisionAxis.look(directions[direction])
@@ -57,6 +56,12 @@ func look_for_player():
 	return found_target
 			
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
+	#Check is overlapping with another body
+	ray.cast_to = Vector2(0,1)
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		emit_signal("collision", self, ray.get_collider())
+	#Correct facing if enemy is target
 	if target != self:
 		var points = globals.nav.find_simple_path(
 		self.position,
@@ -89,8 +94,3 @@ func _on_bump(body):
 		if body is Player:
 			emit_signal("killed_player")
 
-func _on_Tween_tween_step(_object: Object, _key: NodePath, elapsed: float, _value: Object) -> void:
-	if elapsed > 0.04 and elapsed < 0.06:
-		ray.force_raycast_update()
-		if ray.is_colliding():
-			emit_signal("collision", self, ray.get_collider())
