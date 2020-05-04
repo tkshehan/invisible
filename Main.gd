@@ -3,7 +3,7 @@ extends Node
 var level: Node2D
 
 func _ready() -> void:
-	globals.current_level = 1
+	globals.current_level = 4
 	load_level()
 
 func load_level():
@@ -14,6 +14,7 @@ func load_level():
 func on_level_finished():
 	if globals.current_level >= globals.max_level:
 		$Popup.popup()
+		get_tree().paused = true
 		return
 	globals.current_level += 1
 	clear_level()

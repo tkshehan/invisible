@@ -9,6 +9,7 @@ var target = self
 signal killed_player
 
 func _ready():
+	speed = 10
 	connect("bumped", self, "_on_bump")
 	$VisionAxis.look(direction)
 	
