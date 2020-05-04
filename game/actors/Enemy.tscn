@@ -25,6 +25,7 @@ scale = Vector2( 1, 1.33 )
 script = ExtResource( 5 )
 
 [node name="Vision" type="Node2D" parent="VisionAxis" index="0"]
+visible = false
 position = Vector2( 0.242424, 12.8781 )
 script = ExtResource( 3 )
 
@@ -34,7 +35,6 @@ cast_to = Vector2( -24, 0 )
 collision_mask = 11
 
 [node name="RayCast2D3" type="RayCast2D" parent="VisionAxis/Vision" index="1"]
-enabled = true
 cast_to = Vector2( 40, 48 )
 collision_mask = 11
 
@@ -43,7 +43,6 @@ cast_to = Vector2( 0, 64 )
 collision_mask = 11
 
 [node name="RayCast2D5" type="RayCast2D" parent="VisionAxis/Vision" index="3"]
-enabled = true
 cast_to = Vector2( -40, 48 )
 collision_mask = 11
 

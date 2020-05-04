@@ -147,10 +147,11 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="Level" type="Node2D"]
 position = Vector2( 32, 32 )
+z_index = -5
 script = ExtResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 162.414, 65.9446 )
+position = Vector2( 160.319, 65.9446 )
 scale = Vector2( 29.0385, 23.2569 )
 z_index = 5
 texture = ExtResource( 6 )
@@ -182,12 +183,13 @@ visible = false
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -33.0
-margin_top = -31.0
-margin_right = 448.0
-margin_bottom = 131.0
-custom_colors/font_color = Color( 0.188235, 0.219608, 0.286275, 1 )
-text = "You are Dead, press R to restart"
+margin_left = 93.3871
+margin_top = -28.1235
+margin_right = 325.387
+margin_bottom = 2.87652
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You are Dead
+press R to restart"
 align = 1
 valign = 1
 uppercase = true

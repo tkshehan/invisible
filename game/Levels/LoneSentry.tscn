@@ -11,13 +11,13 @@ tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -6
 position = Vector2( 68.2719, 101.739 )
 
 [node name="Enemy" parent="." index="3"]
-position = Vector2( 172.407, 72.3643 )
+position = Vector2( 174.612, 71.6293 )
 
 [node name="Label" type="Label" parent="." index="5"]
-margin_left = 220.401
-margin_top = 8.66511
-margin_right = 380.401
-margin_bottom = 44.6651
+margin_left = -19.9742
+margin_top = 2.78437
+margin_right = 140.026
+margin_bottom = 38.7844
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Press C or Space to Cloak"
 __meta__ = {
