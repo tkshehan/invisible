@@ -17,7 +17,7 @@ signal killed_player
 
 func _ready():
 	speed = 10
-	connect("bumped", self, "_on_bump")
+	var _err = connect("bumped", self, "_on_bump")
 	$VisionAxis.look(directions[direction])
 	look_for_player()
 	

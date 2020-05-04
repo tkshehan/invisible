@@ -3,14 +3,14 @@ extends Node
 var level: Node2D
 
 func _ready() -> void:
-	globals.connect('stop_music', self, 'stop_music')
+	var _err = globals.connect('stop_music', self, 'stop_music')
 	globals.current_level = 1
 	load_level()
 
 func load_level():
 	level = globals.get_level().instance()
 	add_child(level)
-	level.connect("level_cleared", self, "on_level_finished")
+	var _err =  level.connect("level_cleared", self, "on_level_finished")
 	
 func on_level_finished():
 	globals.current_level += 1

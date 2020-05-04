@@ -22,6 +22,8 @@ func connect_points(cells):
 			Vector3(cell.x, cell.y - 1, 0)])
 		for point in points_relative:
 			var point_index = astar.get_closest_point(point)
+			if point_index == cell_index:
+				continue
 			if not astar.has_point(point_index):
 				continue
 			if point in obstacles:

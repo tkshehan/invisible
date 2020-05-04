@@ -6,9 +6,9 @@ signal level_cleared
 
 func _ready():
 	globals.nav = $TileMap
-	$Player.connect("moved", self, '_on_player_moved')
-	$Player.connect("cloaked", self, '_on_player_cloaked')
-	$Player.connect("uncloaked", self, '_on_player_uncloaked')
+	var _err =  $Player.connect("moved", self, '_on_player_moved')
+	_err = $Player.connect("cloaked", self, '_on_player_cloaked')
+	_err = $Player.connect("uncloaked", self, '_on_player_uncloaked')
 	for body in get_tree().get_nodes_in_group("ai"):
 		if body is Enemy:
 			body.connect("killed_player", self, "kill_player")
