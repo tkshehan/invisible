@@ -10,3 +10,6 @@ tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -6
 [node name="Enemy" parent="." index="3"]
 position = Vector2( 302.054, 96.7425 )
 direction = "left"
+
+[node name="Cloak" parent="HUD" index="0"]
+visible = false

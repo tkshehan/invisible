@@ -5,8 +5,8 @@ signal stop_music
 var level_paths = [
 	"res://game/Level.tscn",
 	"res://game/Levels/Entrance.tscn",
-	"res://game/Levels/LoneSentry.tscn",
 	"res://game/Levels/WrapAround.tscn",
+	"res://game/Levels/LoneSentry.tscn",
 	"res://game/Levels/NoBreaks.tscn",
 	"res://game/Levels/WaitForIt.tscn",
 	"res://game/Levels/Final.tscn",
