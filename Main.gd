@@ -3,7 +3,7 @@ extends Node
 var level: Node2D
 
 func _ready() -> void:
-	globals.current_level = 4
+	globals.current_level = 1
 	load_level()
 
 func load_level():

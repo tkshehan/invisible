@@ -30,9 +30,12 @@ func get_dir():
 		end_turn()
 	for dir in inputs.keys():
 		if Input.is_action_pressed(dir):
-			$FootSteps.play()
 			set_frame(dir)
 			return inputs[dir]
+
+func move_tween(dir):
+	.move_tween(dir)
+	$FootSteps.play()
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	end_turn()
