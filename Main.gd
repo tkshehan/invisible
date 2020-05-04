@@ -13,10 +13,6 @@ func load_level():
 	level.connect("level_cleared", self, "on_level_finished")
 	
 func on_level_finished():
-	if globals.current_level >= globals.max_level:
-		$Popup.popup()
-		get_tree().paused = true
-		return
 	globals.current_level += 1
 	clear_level()
 	load_level()

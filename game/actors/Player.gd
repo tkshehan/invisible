@@ -3,7 +3,7 @@ class_name Player
 
 var cloaked = false
 var cloak_timer = 3
-var cloaks_left = 1
+export var cloaks_left: = 1
 
 var alive = true
 
@@ -52,7 +52,7 @@ func end_turn():
 
 		
 func cloak():
-	if cloaked:
+	if cloaked or cloaks_left == 0:
 		return
 	cloaks_left -= 1
 	layers = 4

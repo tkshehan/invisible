@@ -9,6 +9,8 @@ var level_paths = [
 	"res://game/Levels/WrapAround.tscn",
 	"res://game/Levels/NoBreaks.tscn",
 	"res://game/Levels/WaitForIt.tscn",
+	"res://game/Levels/Final.tscn",
+	"res://game/Levels/Ending.tscn"
 ]
 
 var max_level = level_paths.size() - 1
