@@ -26,7 +26,8 @@ func clear_level():
 
 func restart_level():
 	clear_level()
-	load_level()
+	yield( level, "tree_exited" )
+	call_deferred("load_level")
 	$Music.play()
 
 func _input(event: InputEvent) -> void:

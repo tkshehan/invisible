@@ -1,8 +1,8 @@
 extends Actor
 class_name Enemy
 
-var turns = 0
-var agressive = false
+onready var turns = 0
+onready var agressive = false
 export(String, "up", "down", "left", "right") var direction = "down"
 var directions = {
 	"right": Vector2.RIGHT,
@@ -10,12 +10,13 @@ var directions = {
 	"up": Vector2.UP,
 	"down": Vector2.DOWN
 }
-var target = self
+onready var target = self
 
 signal collision(body1, body2)
 signal killed_player
 
 func _ready():
+	print('new')
 	speed = 10
 	connect("bumped", self, "_on_bump")
 	$VisionAxis.look(directions[direction])
