@@ -24,7 +24,7 @@ func _process(_delta):
 				cloak_timer += 1
 
 func get_dir():
-	if not alive:
+	if not alive or !$Timer.is_stopped():
 		return
 	if Input.is_action_just_pressed("wait"):
 		end_turn()
@@ -39,6 +39,7 @@ func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	
 func end_turn():
 	emit_signal("moved")
+	$Timer.start()
 	if cloak_timer == 0:
 		uncloak()
 		
