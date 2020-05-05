@@ -1,10 +1,10 @@
 extends Node
 
-var level: Node2D
+var level
 
 func _ready() -> void:
 	var _err = globals.connect('stop_music', self, 'stop_music')
-	globals.current_level = 1
+	globals.current_level = 0
 	load_level()
 
 func load_level():
@@ -22,6 +22,8 @@ func clear_level():
 
 func restart_level():
 	if globals.current_level == globals.max_level:
+		return
+	if globals.current_level == 0:
 		return
 	clear_level()
 	yield(level, "tree_exited" )
