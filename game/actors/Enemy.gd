@@ -91,5 +91,6 @@ func _on_bump(body, dir):
 			emit_signal("killed_player")
 		else:
 			yield(body, "moved")
-			move(dir)
+			if body.target != target:
+				move(dir)
 

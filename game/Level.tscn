@@ -183,15 +183,21 @@ position = Vector2( 69.9783, 104.014 )
 position = Vector2( 174.113, 45.0619 )
 z_index = 1
 
-[node name="Death_Popup" type="Label" parent="."]
+[node name="Death_Popup" type="ColorRect" parent="."]
 visible = false
+anchor_right = 1.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 448.0
+color = Color( 0.870588, 0.933333, 0.839216, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Death_Popup" type="Label" parent="Death_Popup"]
 light_mask = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 93.3871
-margin_top = -28.1235
-margin_right = 325.387
-margin_bottom = 2.87652
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "You are Dead
 press R to restart"

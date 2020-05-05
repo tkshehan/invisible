@@ -8,8 +8,9 @@ var level_paths = [
 	"res://game/Levels/WrapAround.tscn",
 	"res://game/Levels/LoneSentry.tscn",
 	"res://game/Levels/NoBreaks.tscn",
-	"res://game/Levels/StandHere.tscn",
 	"res://game/Levels/WaitForIt.tscn",
+	"res://game/Levels/StandHere.tscn",
+	"res://game/Levels/Collusion.tscn",
 	"res://game/Levels/Final.tscn",
 	"res://game/Levels/Ending.tscn"
 ]
