@@ -1,9 +1,10 @@
 extends Node
 
 signal stop_music
+signal start_music(duration)
 
 var level_paths = [
-	"res://SplashScreen.tscn",
+	"res://game/Title.tscn",
 	"res://game/Levels/Entrance.tscn",
 	"res://game/Levels/WrapAround.tscn",
 	"res://game/Levels/LoneSentry.tscn",
@@ -16,7 +17,7 @@ var level_paths = [
 ]
 
 var max_level = level_paths.size() - 1
-var current_level = 1
+var current_level = 0
 var nav
 
 func get_level():
@@ -24,3 +25,6 @@ func get_level():
 
 func stop_music():
 	emit_signal("stop_music")
+
+func start_music(duration):
+	emit_signal("start_music", duration)

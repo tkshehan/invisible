@@ -1,12 +1,14 @@
 extends Node
 
-var level
+onready var level = preload("res://SplashScreen.tscn").instance()
 
 func _ready() -> void:
 	$Music.fade_in(0.1)
 	var _err = globals.connect('stop_music', self, 'stop_music')
-	globals.current_level = 0
-	load_level()
+	_err = globals.connect('start_music', self, 'start_music')
+	globals.current_level = -1
+	add_child(level)
+	level.connect("level_cleared", self, "on_level_finished")
 
 func load_level():
 	level = globals.get_level().instance()
@@ -35,17 +37,24 @@ func restart_level():
 	clear_level()
 	yield(level, "tree_exited" )
 	call_deferred("load_level")
-	$Music.fade_in(0)
+	start_music(0)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		restart_level()
 
+func start_music(duration = -1):
+	$Music.fade_volume = -40
+	if duration == -1:
+		$Music.fade_in()
+	else:
+		$Music.fade_in(duration)
+
 func stop_music(duration = -1):
 	if duration == -1:
 		$Music.fade_out()
 	else:
-		 $Music.fade_out(duration)
+		$Music.fade_out(duration)
 
 func is_last_level():
 	return globals.current_level == globals.max_level
