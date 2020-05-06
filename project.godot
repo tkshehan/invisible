@@ -38,7 +38,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="CLOAK & HACKER mechanics test build"
+config/name="CLOAK & HACKER"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 

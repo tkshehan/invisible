@@ -6,6 +6,7 @@ var cloak_timer = 3
 export var cloaks_left: = 1
 
 var alive = true
+var waiting = false
 
 signal cloaked
 signal uncloaked
@@ -25,10 +26,13 @@ func _process(_delta):
 				cloak_timer += 1
 
 func get_dir():
-	if not alive or !$Timer.is_stopped():
+	if not alive or !$Timer.is_stopped() or waiting:
 		return
-	if Input.is_action_just_pressed("wait"):
-		end_turn()
+	if $Moves.has_liberties() == false:
+		waiting = true
+		$Sprite.frame = 0
+		$Moves.finish_him()
+		return
 	for dir in inputs.keys():
 		if Input.is_action_pressed(dir):
 			set_frame(dir)
@@ -55,7 +59,7 @@ func cloak():
 	if cloaked or cloaks_left == 0:
 		return
 	cloaks_left -= 1
-	layers = 4
+	layers = 0
 	$Sprite.set_frame(0)
 	$CloakSounds.cloak()
 	cloaked = true
@@ -64,7 +68,7 @@ func cloak():
 	emit_signal("cloaked")
 
 func uncloak():
-	layers = 5
+	layers = 2
 	$Sprite.set_frame(1)
 	$CloakSounds.uncloak()
 	cloaked = false
@@ -83,6 +87,7 @@ func set_frame(dir):
 		$Sprite.frame = 3
 
 func kill():
+	waiting = false
 	alive = false
 	$CloakSounds.death()
 	$Sprite.frame = 4

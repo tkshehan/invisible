@@ -23,7 +23,7 @@ func _process(_delta):
 		move(dir)
 			
 func move(dir):
-	ray.cast_to = dir * tile_size
+	ray.cast_to = dir * (tile_size * 1.4)
 	ray.force_raycast_update()
 	if !ray.is_colliding():
 #		$AnimationPlayer.play(dir)
