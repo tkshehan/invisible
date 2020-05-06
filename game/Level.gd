@@ -55,5 +55,9 @@ func on_player_win():
 
 func robot_collision(body1, body2):
 	if body1 is Enemy and body2 is Enemy:
+		var cell = $TileMap.world_to_map(body1.position)
+		$TileMap.set_cell(cell.x, cell.y, 1, false, false, false, Vector2(0, 1))
+		cell = $TileMap.world_to_map(body2.position)
+		$TileMap.set_cell(cell.x, cell.y, 1, false, false, false, Vector2(0, 1))
 		body1.queue_free()
 		body2.queue_free()
