@@ -6,7 +6,7 @@ func _ready() -> void:
 	$Music.fade_in(0.1)
 	var _err = globals.connect('stop_music', self, 'stop_music')
 	_err = globals.connect('start_music', self, 'start_music')
-	globals.current_level = -1
+	globals.current_level = 7
 	add_child(level)
 	level.connect("level_cleared", self, "on_level_finished")
 

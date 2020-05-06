@@ -89,8 +89,8 @@ func _on_bump(body, dir):
 	if body is Actor:
 		if body is Player:
 			emit_signal("killed_player")
+			move(dir / 2)
 		else:
-			yield(body, "moved")
-			if body.target != target:
-				move(dir)
+			if body.position != target.position:
+				move_tween(dir)
 

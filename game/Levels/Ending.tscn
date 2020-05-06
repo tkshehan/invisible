@@ -444,7 +444,7 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Credits/Contact/HBoxContainer/VBoxContainer2"]
 margin_top = 47.0
 margin_right = 114.0
-margin_bottom = 67.0
+margin_bottom = 47.0
 custom_fonts/normal_font = ExtResource( 9 )
 custom_colors/default_color = Color( 0.137255, 0.384314, 0.623529, 1 )
 bbcode_enabled = true
@@ -502,7 +502,7 @@ __meta__ = {
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/Credits/Contact/HBoxContainer/VBoxContainer"]
 margin_top = 47.0
 margin_right = 150.0
-margin_bottom = 67.0
+margin_bottom = 47.0
 custom_fonts/normal_font = ExtResource( 9 )
 custom_colors/default_color = Color( 0.137255, 0.384314, 0.623529, 1 )
 bbcode_enabled = true
