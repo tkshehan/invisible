@@ -24,7 +24,8 @@ func on_level_finished():
 		get_tree().paused = true
 		yield($Music/Tween, "tween_completed")
 	clear_level()
-	load_level()
+	yield(level, "tree_exited" )
+	call_deferred("load_level")
 
 func clear_level():
 	level.queue_free()
