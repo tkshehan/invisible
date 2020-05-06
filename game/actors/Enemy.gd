@@ -19,7 +19,7 @@ func _ready():
 	speed = 10
 	var _err = connect("bumped", self, "_on_bump")
 	$VisionAxis.look(directions[direction])
-	look_for_player()
+	player_moved()
 	
 func player_moved():
 	look_for_player()

@@ -12,6 +12,7 @@ var level_paths = [
 	"res://game/Levels/WaitForIt.tscn",
 	"res://game/Levels/StandHere.tscn",
 	"res://game/Levels/Collusion.tscn",
+	"res://game/Levels/ShakeItOff.tscn",
 	"res://game/Levels/Final.tscn",
 	"res://game/Levels/Ending.tscn"
 ]

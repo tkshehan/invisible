@@ -5,7 +5,7 @@ signal level_cleared
 var starting = false
 
 func _ready() -> void:
-	connect("tree_exiting", self, "start_music")
+	var _err = connect("tree_exiting", self, "start_music")
 	$AnimationPlayer.play("Curtain")
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:

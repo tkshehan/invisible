@@ -36,6 +36,9 @@ func _on_player_cloaked():
 	var _decoy = decoy.instance()
 	_decoy.position = $Player.position - Vector2(1,1)
 	add_child(_decoy)
+	for actor in get_tree().get_nodes_in_group("ai"):
+		if actor is Enemy and actor.target is Player:
+			actor.target = _decoy
 	if $Player.cloaks_left == 0:
 		$HUD.no_cloak()
 	
