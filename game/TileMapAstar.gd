@@ -2,8 +2,14 @@ extends TileMap
 
 onready var astar = AStar.new()
 onready var obstacles = get_used_cells_by_id(0)
+var enemy_cells = []
 
-func _ready():
+func create_paths(enemies):
+	astar.clear()
+	enemy_cells = []
+	for body in enemies:
+		if body.agressive == false:
+			enemy_cells.append(world_to_map(body.position))
 	var cells = get_used_cells()
 	for cell in cells:
 		astar.add_point(astar.get_available_point_id(), Vector3(cell.x, cell.y, 0))
@@ -12,7 +18,7 @@ func _ready():
 			
 func connect_points(cells):
 	for cell in cells:
-		if cell in obstacles:
+		if cell in obstacles or cell in enemy_cells:
 			continue
 		var cell_index = astar.get_closest_point(Vector3(cell.x, cell.y, 0))
 		var points_relative = PoolVector3Array([
@@ -26,7 +32,7 @@ func connect_points(cells):
 				continue
 			if not astar.has_point(point_index):
 				continue
-			if point in obstacles:
+			if point in obstacles or point in enemy_cells:
 				continue
 			astar.connect_points(cell_index, point_index, false)
 	

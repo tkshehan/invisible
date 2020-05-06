@@ -13,6 +13,7 @@ func _ready():
 		if body is Enemy:
 			body.connect("killed_player", self, "kill_player")
 			body.connect("collision", self, "robot_collision")
+	$TileMap.create_paths(get_tree().get_nodes_in_group("enemies"))
 	
 # Draws a grid
 func _draw():
@@ -26,6 +27,7 @@ func _draw():
 		draw_line(Vector2(begin, y), Vector2(end_x, y), color)
 
 func _on_player_moved():
+	$TileMap.create_paths(get_tree().get_nodes_in_group("enemies"))
 	var position = $TileMap.world_to_map($Player.position)
 	if $TileMap.get_cell(position.x, position.y) == 2:
 		on_player_win()
