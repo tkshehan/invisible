@@ -4,7 +4,6 @@ onready var astar = AStar.new()
 onready var obstacles = get_used_cells_by_id(0)
 
 func _ready():
-	print(get_cell_autotile_coord(0,0))
 	var cells = get_used_cells()
 	for cell in cells:
 		astar.add_point(astar.get_available_point_id(), Vector3(cell.x, cell.y, 0))
