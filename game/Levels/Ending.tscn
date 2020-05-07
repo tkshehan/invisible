@@ -130,10 +130,10 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 15, 15.5, 17.1, 17.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 12, 15, 15.001, 15.5, 17.1, 17.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="DynamicFont" id=2]
@@ -505,7 +505,7 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Credits/final/Team/VBoxContainer2"]
 margin_top = 47.0
 margin_right = 114.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 custom_fonts/normal_font = ExtResource( 9 )
 custom_colors/default_color = Color( 0.137255, 0.384314, 0.623529, 1 )
 bbcode_enabled = true
@@ -563,7 +563,7 @@ __meta__ = {
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/Credits/final/Team/VBoxContainer"]
 margin_top = 47.0
 margin_right = 150.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 custom_fonts/normal_font = ExtResource( 9 )
 custom_colors/default_color = Color( 0.137255, 0.384314, 0.623529, 1 )
 bbcode_enabled = true
