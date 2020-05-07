@@ -4,8 +4,9 @@ onready var level = preload("res://SplashScreen.tscn").instance()
 
 func _ready() -> void:
 	globals.current_level = -1
-	
-	$Music.fade_in(0.1)
+	$Music.fade_in(0)
+	yield($Timer, "timeout")
+
 	var _err = globals.connect('stop_music', self, 'stop_music')
 	_err = globals.connect('start_music', self, 'start_music')
 	add_child(level)

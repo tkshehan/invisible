@@ -28,3 +28,7 @@ transition_duration = 0.1
 EASE = "EASE_OUT_IN"
 
 [node name="Tween" type="Tween" parent="Music"]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
