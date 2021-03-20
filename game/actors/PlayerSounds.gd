@@ -7,7 +7,7 @@ onready var sounds = {
 }
 
 func _ready():
-	volume_db = -30
+	volume_db = -10
 
 func cloak():
 	stream = sounds['cloaking']

@@ -5,7 +5,7 @@ onready var sounds = {
 }
 
 func _ready():
-	volume_db = -30
+	volume_db = -10
 
 func lock_on():
 	stream = sounds['lock_on']

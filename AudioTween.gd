@@ -5,7 +5,7 @@ onready var tween = get_node("Tween")
 export var transition_duration = 1.00
 export var transition_type = 1 # TRANS_SINE
 export(String, "EASE_IN", "EASE_OUT", "EASE_IN_OUT", "EASE_OUT_IN") var EASE = "EASE_OUT"
-export var fade_volume = -30
+export var fade_volume = -10
 
 func _ready() -> void:
 	volume_db = -80

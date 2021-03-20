@@ -47,7 +47,7 @@ func _input(event: InputEvent) -> void:
 		restart_level()
 
 func start_music(duration = -1):
-	$Music.fade_volume = -40
+	$Music.fade_volume = -10
 	if duration == -1:
 		$Music.fade_in()
 	else:
