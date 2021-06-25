@@ -22,8 +22,6 @@ var inputs = {
 func _process(_delta):
 		if Input.is_action_pressed("cloak") and not cloaked and alive:
 			cloak()
-			if tween.is_active():
-				cloak_timer += 1
 
 func get_dir():
 	if not alive or !$Timer.is_stopped() or waiting:
@@ -56,10 +54,13 @@ func end_turn():
 
 		
 func cloak():
+	if tween.is_active():
+		return
 	if cloaked or cloaks_left == 0:
 		return
 	cloaks_left -= 1
-	layers = 0
+	set_collision_layer_bit(1, false)
+	set_collision_layer_bit(4, true)
 	$Sprite.set_frame(0)
 	$CloakSounds.cloak()
 	cloaked = true
@@ -68,7 +69,8 @@ func cloak():
 	emit_signal("cloaked")
 
 func uncloak():
-	layers = 2
+	set_collision_layer_bit(1, true)
+	set_collision_layer_bit(4, false)
 	$Sprite.set_frame(1)
 	$CloakSounds.uncloak()
 	cloaked = false
